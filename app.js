@@ -2,7 +2,6 @@ var questionHeader = document.querySelector('#question'),
     choiceList = document.querySelector("#choices"),
     nextBtn = document.querySelector('#nextBtn'),
     tickBox = document.querySelector('#ticbox');
-    
 
 var Quiz = {
     name: "Quiz",
@@ -28,13 +27,16 @@ var Quiz = {
         choices: ["Red", "Blue", "Green"],
         correctAnswer: "Green"
     }],
-}
+};
+
+// var questionIndex = Quiz.questionArray[Quiz.currentQuestion];
 
 function showNextQuestion() {
     var choicesText;
     var questionIndex = Quiz.questionArray[Quiz.currentQuestion];
     // clear current choice list
     choiceList.innerHTML = "";
+    tickBox.innerHTML = "";
     // display question header
     questionHeader.textContent = questionIndex.question;
     // loop through current question choices, and add to quiz list
@@ -50,30 +52,43 @@ function showNextQuestion() {
     }
 }
 
+ function showScore(){
+     if ((Quiz.currentQuestion + 1) >= Quiz.questionArray.length){
+         questionHeader.textContent = "Congratulations you have a scored "+ Quiz.score +"/"+ Quiz.questionArray.length;
+         
+     } else {
+        Quiz.currentQuestion++;
+        showNextQuestion();
+    }
+ };
+// if cq > q.q.length
+  // ch head
+// else
+  //
+//   show next question()
 
-// function to increment currentQuestion and 
-    // if it's the last question
-        //enter win state,
-    // else 
-        // showNextQuestion();
-        
-// function to deal with win state;
 
-// function to show correct answer;
-    // listen for event (user moving to next question)
-
-
-choiceList.addEventListener('click', function(event) {
+function isCorrect(event) {
+    choiceList.removeEventListener('click', isCorrect);
+    console.log(Quiz.questionArray[Quiz.currentQuestion].correctAnswer)
+    //if currentQuestion=4 then change header to "congratulations, you finished" else run this
     if (event.target.textContent === Quiz.questionArray[Quiz.currentQuestion].correctAnswer) {
-        tickBox.innerHTML = '<p>&#9989;</p>'
-    };
-    
-});
+        tickBox.innerHTML = '<p>&#9989;</p>';
+        Quiz.score++;
+        questionHeader.textContent = "CORRECT!";
+    } else {
+        questionHeader.textContent = "NOPE!";
+        tickBox.innerHTML = '<p>&#x274C;</p>';
+    }
+}
+
+
+choiceList.addEventListener('click', isCorrect);
 
 showNextQuestion();
 
 // mock event to try functionality
 nextBtn.addEventListener('click', function() {
-    Quiz.currentQuestion++;
-    showNextQuestion();
+    choiceList.addEventListener('click', isCorrect);
+    showScore();
 });
