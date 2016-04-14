@@ -29,7 +29,6 @@ var Quiz = {
     }],
 };
 
-// var questionIndex = Quiz.questionArray[Quiz.currentQuestion];
 
 function showNextQuestion() {
     var choicesText;
@@ -53,20 +52,13 @@ function showNextQuestion() {
 }
 
  function showScore(){
-     if ((Quiz.currentQuestion + 1) >= Quiz.questionArray.length){
-         questionHeader.textContent = "Congratulations you have a scored "+ Quiz.score +"/"+ Quiz.questionArray.length;
-         
-     } else {
+    if ((Quiz.currentQuestion + 1) >= Quiz.questionArray.length){
+        questionHeader.textContent = "Congratulations you have a scored "+ Quiz.score +"/"+ Quiz.questionArray.length;
+    } else {
         Quiz.currentQuestion++;
         showNextQuestion();
     }
  };
-// if cq > q.q.length
-  // ch head
-// else
-  //
-//   show next question()
-
 
 function isCorrect(event) {
     choiceList.removeEventListener('click', isCorrect);
