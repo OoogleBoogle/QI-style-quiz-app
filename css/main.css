@@ -364,6 +364,11 @@ textarea {
   font: inherit;
   /* 2 */ }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 .backgroundImage {
   position: fixed;
   background: black url("../images/background.jpg") center no-repeat;
@@ -400,19 +405,23 @@ svg:not(:root) {
   margin: 6em auto 0; }
 
 #question, #choices {
+  opacity: 0;
   text-align: center;
   color: white;
-  font-size: 2rem; }
+  font-size: 2rem;
+  animation: fadeIn 1s linear 1s forwards; }
 
 #choices {
   list-style-type: none;
-  padding-left: 0; }
+  padding-left: 0;
+  animation: fadeIn 1s linear 2s forwards; }
   #choices li {
     border: 3px solid white;
     border-radius: 50px;
     margin: 1em auto;
     padding: 0.5em;
-    background-color: rgba(0, 0, 0, 0.8); }
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: border-color 0.4s; }
     #choices li:hover {
       border-color: green;
       cursor: -webkit-grab; }

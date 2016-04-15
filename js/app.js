@@ -9,33 +9,33 @@ var Quiz = {
     currentQuestion: 0,
     questionArray: [{
         question: "In what 'code' did Thomas Edison propose to his wife?",
-        choices: ["JavaScript", "Morse", "Enigma"],
-        correctAnswer: "Morse"
+        choices: ["JavaScript.", "Morse.", "Enigma."],
+        correctAnswer: "Morse."
     },
     {
         question: "What is the fastest recorded speed for a Mobility Scooter?",
-        choices: ["107.6 mph", "84.7 mph", "68.2 mph"],
-        correctAnswer: "107.6 mph"
+        choices: ["107.6 mph.", "84.7 mph.", "68.2 mph."],
+        correctAnswer: "107.6 mph."
     },
     {
         question: "Which of these are younger?",
-        choices: ["Saturn's Rings", "The Dinosaurs"],
-        correctAnswer: "Saturn's Rings"
+        choices: ["Saturn's Rings.", "The Dinosaurs."],
+        correctAnswer: "Saturn's Rings."
     },
     {
-        question: "In Vietnam, what can police give you as punishment for a driving offence instead of a fine?",
-        choices: ["A slap around the face with a rotten haddock", "Wearing a 'criminal mask' for 30 days (even at night)", "50 Lines"],
-        correctAnswer: "50 Lines"
+        question: "In Vietnam, what can the police give you as punishment for a driving offence instead of a fine?",
+        choices: ["A slap around the face with a rotten haddock.", "Wearing a 'criminal mask' for 30 days (even at night).", "50 Lines."],
+        correctAnswer: "50 Lines."
     },
     {
         question: "The pressure in a good bottle of Champagne is equal to what?",
-        choices: ["40 feet underwater", "The cabin of a decending aircraft", "The tyre pressure of a London double decker bus"],
-        correctAnswer: "The tyre pressure of a London double decker bus"
+        choices: ["40 feet underwater.", "The tyre pressure of a London double decker bus.", "The cabin of a decending aircraft."],
+        correctAnswer: "The tyre pressure of a London double decker bus."
     },
     {
         question: "In the last 50 years, which of these have (strangely) gotten quieter?",
-        choices: ["Movie Theaters", "Un-oiled door hinges", "Insects' footsteps"],
-        correctAnswer: "Insects' footsteps"
+        choices: ["Movie Theaters.", "Un-oiled door hinges.", "Insects' footsteps."],
+        correctAnswer: "Insects' footsteps."
     }],
 };
 
