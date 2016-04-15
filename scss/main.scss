@@ -1,37 +1,4 @@
-li {
-    font-size: 1.5em;
-    list-style-type: none;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
-    &:hover {
-        border: 2px solid green;
-    }
-}
-
-ul {
-    padding: 0;
-}
-
-h1 {
-    text-align: center;
-}
-
-#nextBtn {
-    display: block;
-    margin: 0 auto;
-}
-
-body{
-    margin: 20%;
-    background-color: cornflowerblue;
-    color: white;
-}
-
-#ticbox{
-    font-size: 3.5rem;
-    list-style-type: none;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
-}
+@import "normalize";
+@import "background";
+@import "header";
+@import "quizapp";

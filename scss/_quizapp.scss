@@ -1,0 +1,51 @@
+#quizapp {
+	max-width: 552px;
+	height: 100%;
+	margin: 6em auto 0;
+}
+
+#question {
+	text-align: center;
+	color: white;
+	font-size: 2rem;
+}
+
+#choices {
+	@extend #question;
+	list-style-type: none;
+	padding-left: 0;
+	li {
+		border: 3px solid white;
+		border-radius: 50px;
+		margin: 1em auto;
+		padding: 0.5em;
+		background-color: rgba(0,0,0,0.8);
+		&:hover {
+			border-color: green;
+			cursor: -webkit-grab;
+		}
+	}
+}
+
+#nextBtn {
+	display: none;
+	padding: 1.5em 2.5em;
+	background-color: green;
+	border: none;
+	border-radius: 25px;
+	font-size: 1.2em;
+	color: white;
+	margin-left: 10%;
+	width: 80%;
+	&:focus {
+		outline: none;
+	}
+}
+
+#tickbox {
+	p {
+		text-align: center;
+		font-size: 4em;
+		margin: 0;
+	}
+}

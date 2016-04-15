@@ -1,0 +1,17 @@
+header {
+	h1 {
+		color: white;
+	}
+	.svg {
+		fill: rgba(146, 173, 245, 0.9);
+	}
+}
+
+svg:not(:root) {
+	position: absolute;
+	width: 20%;
+	height: 20%;
+	top: 0;
+	left: 40%;
+	z-index: -5;
+}
