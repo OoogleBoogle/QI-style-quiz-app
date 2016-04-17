@@ -37,7 +37,12 @@ var Quiz = {
         question: "In the last 50 years, which of these have (strangely) gotten quieter?",
         choices: ["Movie Theaters.", "Un-oiled door hinges.", "Insects' footsteps."],
         correctAnswer: "Insects' footsteps."
-    }],
+    },
+    {
+        question: "In Elizabethan England, what was a common treatment for warts?",
+        choices: ["Rubbing the area with half a mouse.", "Leeches on the main vains of the arm.", "A sharp blow with a tiny hammer."],
+        correctAnswer: "Rubbing the area with half a mouse."
+    }]
 };
 
 
@@ -45,34 +50,27 @@ function showNextQuestion() {
     var choicesText;
     // store which question we're on
     var questionIndex = Quiz.questionArray[Quiz.currentQuestion];
-    // clear current choice list
+    // clear current choice list and tickbox container
     choiceList.innerHTML = "";
     tickBox.innerHTML = "";
     // display question header
     questionHeader.textContent = questionIndex.question;
     // loop through current choices, and add to quiz list
     for (var i = 0; i < questionIndex.choices.length; i++) {
-        // Create list element
-        var listEle = document.createElement('li');
-        // create a text node for the choice
-        var choicesText = document.createTextNode(questionIndex.choices[i]);
-        // append the choice text to the list element
-        listEle.appendChild(choicesText);
-        // append the list element to the ul in the document
-        choiceList.appendChild(listEle);
+        var listEle = document.createElement('li'); // Create list element
+        var choicesText = document.createTextNode(questionIndex.choices[i]); // create a text node for the choice
+        listEle.appendChild(choicesText); // append the choice text to the list element
+        choiceList.appendChild(listEle);  // append the list element to the ul in the document
     }
-    // show the list
-    choiceList.style.display = 'block';
-    // hide the 'next' button
-    nextBtn.style.display = 'none';
-    // show the question number
-    updateQuestionNumber();
+    choiceList.style.display = 'block'; // show the list
+    nextBtn.style.display = 'none'; // hide the 'next' button
+    updateQuestionNumber(); // show the question number
 }
 
- function checkState(){
+ function checkState() {
     // if there are no more questions left...
     if ((Quiz.currentQuestion + 1) >= Quiz.questionArray.length){
-        questionHeader.textContent = "Congratulations you have a scored "+ Quiz.score +"/"+ Quiz.questionArray.length;
+        questionHeader.textContent = scoreFeedback();
         nextBtn.value = 'Go Again!!!';
         tickBox.innerHTML = "";
     // if not, show the next question
@@ -108,10 +106,30 @@ function restart() {
 }
 
 function updateQuestionNumber() {
-    var currentNumber = Quiz.currentQuestion + 1;
+    var currentNumber = Quiz.currentQuestion + 1; // increase index number by 1 to show as 1 from 6 not 0 from 6 etc...
     var totalQuestions = Quiz.questionArray.length;
     var text = "Question " + currentNumber + " of " + totalQuestions;
     questionNumber.textContent = text;
+}
+
+function scoreFeedback() {
+    var feedback = "And that's the end of the quiz! ";
+    var score = Quiz.score;
+    var totQuests = Quiz.questionArray.length;
+    if (score === totQuests) {
+        feedback += "Congratulations! You've scored an outstanding ";
+    }
+    else if (score >= totQuests - 2) {
+        feedback += "Well done! You've scored a respectable ";
+    }
+    else if (score >= totQuests - 5) {
+        feedback += "You've scored a not very amazing but totally acceptable ";
+    }
+    else {
+        feedback += "Perhaps you shoud have another go. You've scored a shameful "
+    }
+    feedback += score + " out of " + totQuests + "!";
+    return feedback;
 }
 
 
@@ -123,9 +141,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (nextBtn.value === "Go Again!!!") {
             // put it's text back to 'next question'
             nextBtn.value = 'Next Question...';
-            // and reset counters
+            // and reset counters and start over
             restart();
-        // other wise check the current game state
+        // otherwise check the current game state
         } else {
             checkState();
         }

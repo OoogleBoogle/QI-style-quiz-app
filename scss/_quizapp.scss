@@ -16,7 +16,7 @@
 	@extend #question;
 	list-style-type: none;
 	padding-left: 0;
-	animation: fadeIn 0.7s ease-in-out 0.5s forwards;
+	animation: fadeIn 0.7s ease-in-out 1s forwards;
 	li {
 		border: 3px solid white;
 		border-radius: 50px;
@@ -27,6 +27,7 @@
 		&:hover {
 			border-color: green;
 			cursor: -webkit-grab;
+			cursor: grab;
 		}
 	}
 }

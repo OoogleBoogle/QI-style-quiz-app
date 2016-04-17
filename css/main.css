@@ -414,7 +414,7 @@ svg:not(:root) {
 #choices {
   list-style-type: none;
   padding-left: 0;
-  animation: fadeIn 0.7s ease-in-out 0.5s forwards; }
+  animation: fadeIn 0.7s ease-in-out 1s forwards; }
   #choices li {
     border: 3px solid white;
     border-radius: 50px;
@@ -424,7 +424,8 @@ svg:not(:root) {
     transition: border-color 0.4s; }
     #choices li:hover {
       border-color: green;
-      cursor: -webkit-grab; }
+      cursor: -webkit-grab;
+      cursor: grab; }
 
 #nextBtn {
   display: none;
