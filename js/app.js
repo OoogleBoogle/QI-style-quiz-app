@@ -1,7 +1,8 @@
 var questionHeader = document.querySelector('#question'),
     choiceList = document.querySelector("#choices"),
     nextBtn = document.querySelector('#nextBtn'),
-    tickBox = document.querySelector('#tickbox');
+    tickBox = document.querySelector('#tickbox'),
+    questionNumber = document.querySelector('#questionNumber');
 
 var Quiz = {
     name: "Quiz",
@@ -64,6 +65,8 @@ function showNextQuestion() {
     choiceList.style.display = 'block';
     // hide the 'next' button
     nextBtn.style.display = 'none';
+    // show the question number
+    updateQuestionNumber();
 }
 
  function checkState(){
@@ -104,24 +107,37 @@ function restart() {
     showNextQuestion();
 }
 
-nextBtn.addEventListener('click', function() {
-    // when the user clicks the next question button..
-    choiceList.addEventListener('click', isCorrect);
-    // if the quiz has ended and the button reads "go again"
-    if (nextBtn.value === "Go Again!!!") {
-        // put it's text back to 'next question'
-        nextBtn.value = 'Next Question...';
-        // and reset counters
-        restart();
-    // other wise check the current game state
-    } else {
-        checkState();
-    }
-});
+function updateQuestionNumber() {
+    var currentNumber = Quiz.currentQuestion + 1;
+    var totalQuestions = Quiz.questionArray.length;
+    var text = "Question " + currentNumber + " of " + totalQuestions;
+    questionNumber.textContent = text;
+}
 
-// when the browser loads..start the game and add the event listener to list items.
-showNextQuestion();
-choiceList.addEventListener('click', isCorrect);
+
+document.addEventListener('DOMContentLoaded', function() {
+    nextBtn.addEventListener('click', function() {
+        // when the user clicks the next question button..
+        choiceList.addEventListener('click', isCorrect);
+        // if the quiz has ended and the button reads "go again"
+        if (nextBtn.value === "Go Again!!!") {
+            // put it's text back to 'next question'
+            nextBtn.value = 'Next Question...';
+            // and reset counters
+            restart();
+        // other wise check the current game state
+        } else {
+            checkState();
+        }
+    });
+
+    // when the browser loads..start the game and add the event listener to list items.
+    showNextQuestion();
+    choiceList.addEventListener('click', isCorrect);
+});
+            
+
+
 
 
 
